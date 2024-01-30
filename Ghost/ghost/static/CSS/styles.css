@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+* {
+  font-family: "Quicksand", serif;
+  line-height: normal;
+  list-style-type: none;
+}/*# sourceMappingURL=styles.css.map */
