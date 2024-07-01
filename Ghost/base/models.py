@@ -9,7 +9,7 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True, default="avatar.svg")
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username'] ## necessary as without that, I won't be able to make a super user.
 
 
 class Topic(models.Model):
