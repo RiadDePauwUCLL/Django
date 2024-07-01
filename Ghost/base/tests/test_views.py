@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
-from base.models import User, Room, Topic
+from base.models import User, Room, Topic, Message
 from django.contrib.auth import get_user
 
 
@@ -94,3 +94,26 @@ class TestViews(TestCase):
         self.assertRedirects(response, reverse('home'))
 
         self.assertTrue(get_user(self.client).is_authenticated)
+
+
+
+
+
+    ##                      TESTING DELETE ENDPOINTS
+
+
+    def test_delete_room_view_DELETE(self):
+        self.assertTrue(Room.objects.filter(pk=1).exists())
+
+        response = self.client.delete(reverse('delete-room', args=['1']))
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(Room.objects.filter(pk=1).exists())
+
+    def test_delete_message_view_DELETE(self):
+        self.assertTrue(Message.objects.filter(pk=1).exists())
+
+        response = self.client.delete(reverse('delete-message', args=['1']))
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(Message.objects.filter(pk=1).exists())
